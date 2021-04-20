@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      display: grid;
+      height: 100%;
+      grid-template-columns: 1fr;
+      grid-template-areas: "header""main""footer";
+      grid-template-rows: auto auto 10%;
+      margin-left: 5%;
+      margin-right: 5%;
+      background: linear-gradient(to right,
+          #f86245 0%,
+          #5c2d1c 50%,
+          #f86245 50%,
+          black 100%);
+    }
+
+    /*Esto es para la cabezera*/
+    header {
+      grid-area: header;
+    }
+
+    #menu {
+      display: none;
+    }
+
+    #logo {
+      height: 100px;
+    }
+
+    nav {
+      display: flex;
+      border: groove 0.25em #000;
+      border-radius: 0.25em;
+    }
+
+    ul a:hover,
+    ul a:focus {
+      background-color: #5c2d1c;
+      color: #fdbb49;
+    }
+
+    li {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    ul {
+      display: flex;
+      background-color: #fdbb49;
+      list-style: none;
+      flex-grow: 1;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      display: flex;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav>a {
+      flex-grow: 0;
+    }
+
+    /*Esto es para el Main*/
+    main {
+      grid-area: main;
+      display: grid;
+      grid-template-columns: 70% 30%;
+      grid-template-areas: "inf login";
+
+      background-color: #fdbb49;
+      border: groove 0.25em #000;
+      border-radius: 0.25em;
+      margin: 2.5%;
+    }
+
+    #inf {
+      grid-area: inf;
+      background-color: hotpink;
+      height: 100%;
+    }
+
+    #login {
+      grid-area: login;
+      background-color: lawngreen;
+      height: 100%;
+    }
+
+    /*Esto es para el Footer*/
+    footer {
+      background-color: #5c2d1c;
+      grid-area: footer;
+
+      border: groove 0.25em #000;
+      border-radius: 0.25em;
+    }
+
+    /*Media query Nav*/
+    @media screen and (max-width: 800px) {
+      body {
+        grid-template-rows: auto auto 10%;
+      }
+
+      #menu {
+        display: block;
+        width: 52px;
+        height: 40px;
+        margin: 3px;
+        border: groove 0.25em #000;
+        border-radius: 0.25em;
+        background-image: url("./img/bars.png");
+        background-position: center center;
+      }
+
+      main {
+        grid-template-columns: 70% 30%;
+        grid-template-areas: "login""inf";
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+      }
+
+      ul {
+        flex-direction: column;
+      }
+
+      nav>a {
+        justify-content: space-between;
+        background-color: #fdbb49;
+      }
+
+      .mostrar {
+        display: flex;
+      }
+
+      .ocultar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="./index.html"><img id="logo" alt="" src="./img/LogoAcademia.png" />
+        <button id="menu"></button></a>
+
+      <ul id="lista" class="ocultar">
+        <li><a href="./registro.html">REGISTRO</a></li>
+        <li><a href="./informacion.html">INFORMACION</a></li>
+        <li><a href="./informacionUsuario.html">INFORMACION USUARIO</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="inf">Informacion</section>
+    <section id="login">Login</section>
+  </main>
+
+  <footer>F</footer>
+  <script>
+    document.getElementById("menu").addEventListener("click", mostrar);
+
+    function mostrar(e) {
+      e.preventDefault();
+      let lista = document.getElementById("lista");
+      if (lista.className == "ocultar") {
+        lista.className = "mostrar";
+      } else {
+        lista.className = "ocultar";
+      }
+    }
+  </script>
+</body>
+
+</html>
